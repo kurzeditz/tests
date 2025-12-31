@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Fullscreen Video</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        overflow: hidden;
+    }
+
+    #start {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        background: black;
+        z-index: 10;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div id="start">KLIK LAYAR</div>
+
+<video id="video" src="video.mp4"></video>
+
+<script>
+const start = document.getElementById("start");
+const video = document.getElementById("video");
+
+start.onclick = () => {
+    // fullscreen
+    if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+    }
+
+    start.style.display = "none";
+    video.style.display = "block";
+    video.play();
+};
+</script>
+
+</body>
+</html>
